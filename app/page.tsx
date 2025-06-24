@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const products = await stripe.products.list({
     expand: ["data.default_price"],
-    limit: 5,
+    
   });
 
   return (
@@ -44,7 +44,7 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.data.map((product) => {
-            const price = product.default_price as string;
+            const price = product.default_price;
             return (
               <div
                 key={product.id}
