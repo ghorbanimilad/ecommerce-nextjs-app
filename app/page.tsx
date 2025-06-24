@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import Link from "next/link";
-import { parse } from "path";
+import Stripe from "stripe";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -15,6 +15,7 @@ export default async function Home() {
     expand: ["data.default_price"],
     
   });
+
 
   return (
     <div className="  ">
@@ -45,7 +46,7 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.data.map((product) => {
-            const price = product.default_price;
+            const price = product.default_price as Stripe.Price;
             return (
               <div
                 key={product.id}
@@ -63,7 +64,7 @@ export default async function Home() {
                 <span className="mb-3 ">{product.description}</span>
                 <p className="text-gray-600 mb-4 flex flex-row gap-2 items-center">
                   Price:
-                  {price && parse(price.unit_amount)  && (
+                  {price && price.unit_amount  && (
                     <p> ${(price.unit_amount / 100).toFixed(2)}</p>
                   )}
                 </p>
