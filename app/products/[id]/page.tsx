@@ -5,22 +5,25 @@ import React from "react";
 export default async function ProductPage({
   params,
 }: {
-  params: { id: any };
+  params: Promise<{ id: string }>;
 }) {
-  const product = await stripe.products.retrieve(params.id, {
+  const { id } = await params;
+  const product = await stripe.products.retrieve(id, {
     expand: ["default_price"],
   });
   const plainProduct = JSON.parse(JSON.stringify(product));
   return (
     <div>
       <div className="flex container mx-auto my-6 items-center justify-center border-b-4 shadow-lg mb-9 border-gray-200">
-      <ProductDetail product={plainProduct} />
+        <ProductDetail product={plainProduct} />
       </div>
 
       <div className="border-t-2 border-gray-200 mt-4">
         <div className="container mx-auto p-6">
           <h2 className="text-2xl font-bold mb-4">Product Reviews</h2>
-          <p className="text-gray-600">No reviews yet. Be the first to review!</p>
+          <p className="text-gray-600">
+            No reviews yet. Be the first to review!
+          </p>
         </div>
       </div>
     </div>
