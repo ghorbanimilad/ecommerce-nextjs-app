@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import Link from "next/link";
+import { parse } from "path";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -62,7 +63,7 @@ export default async function Home() {
                 <span className="mb-3 ">{product.description}</span>
                 <p className="text-gray-600 mb-4 flex flex-row gap-2 items-center">
                   Price:
-                  {price && price.unit_amount  && (
+                  {price && parse(price.unit_amount)  && (
                     <p> ${(price.unit_amount / 100).toFixed(2)}</p>
                   )}
                 </p>
