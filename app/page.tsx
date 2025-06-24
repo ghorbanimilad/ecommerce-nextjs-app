@@ -20,14 +20,14 @@ export default async function Home() {
   return (
     <div className="  ">
       <div className="mb-6">
-        <div className=" back-header px-16 py-16 space-y-6">
-          <p className="text-6xl max-w-[550px] bg-amber-700/40 rounded shadow selection:bg-yellow-700 drop-shadow-amber-400 tracking-tight line-clamp-[15px] font-bold uppercase text-white py-3 px-2">
+        <div className="back-header px-16 py-16 space-y-6">
+          <p className="text-6xl max-w-[550px] sm:text-lg bg-amber-700/40 rounded shadow selection:bg-yellow-700 drop-shadow-amber-400 tracking-tight line-clamp-[15px] font-bold uppercase text-white py-3 px-2">
             milad Ecommerce online website
           </p>
-          <div className="flex items-center  gap-3">
+          <div className="flex items-center sm:text-sm gap-3">
             <Link
               href="/products"
-              className="hover:bg-amber-900/70 font-semibold text-lg bg-amber-700/70  transition-all text-white border-2 rounded-4xl px-6 py-3"
+              className="hover:bg-amber-900/70 sm:text-sm font-semibold text-lg bg-amber-700/70  transition-all text-white border-2 rounded-4xl px-6 py-3"
             >
               Try to purches
             </Link>
